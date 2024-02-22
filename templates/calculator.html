@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>공학 계산기</title>
+    <!-- Bootstrap CSS 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .calculator {
+            width: 100%;
+            height: 95vh;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 20px;
+            padding: 10px;
+        }
+        .btns {
+            width: 100%;
+        }
+        .btns button{
+            width: 19%;
+            height: 12vh;
+        }
+        .result{
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 calculator">
+        <h1 class="mb-4">공학 계산기</h1>
+        <form method="post" action="/calculate">
+            <div class="form-group">
+                <input type="text" class="form-control" name="expression" id="expression" placeholder="0" required>
+            </div>
+            <div class="btns">
+                <button type="button" class="btn btn-warning" onclick="appendToExpression('!')">x!</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('(')">(</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression(')')">)</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('%')">%</button>
+                <button type="button" class="btn btn-danger" onclick="clearExpression()">CE</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" onclick="appendToExpression('π')">π</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('7')">7</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('8')">8</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('9')">9</button>
+                <button type="button" class="btn btn-success" onclick="appendToExpression('/')">/</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" onclick="appendToExpression('^')">xⁿ</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('4')">4</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('5')">5</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('6')">6</button>
+                <button type="button" class="btn btn-success" onclick="appendToExpression('*')">*</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" onclick="appendToExpression('√')">√</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('1')">1</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('2')">2</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('3')">3</button>
+                <button type="button" class="btn btn-success" onclick="appendToExpression('-')">-</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" onclick="appendToExpression('e')">e</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('0')">0</button>
+                <button type="button" class="btn btn-info" onclick="appendToExpression('.')">.</button>
+                <button type="submit" class="btn btn-success">=</button>
+                <button type="button" class="btn btn-success" onclick="appendToExpression('-')">+</button>
+            </div>
+        </form>
+        {% if result is defined %}
+            <div class="mt-4">
+                <p class="result">{{ result }}</p>
+            </div>
+        {% endif %}
+        <script>
+            function appendToExpression(value) {
+                document.getElementById('expression').value += value;
+            }
+            function clearExpression() {
+                var expressionField = document.getElementById('expression');
+                expressionField.value = expressionField.value.slice(0, -1);
+            }
+            function resetExpression() {
+                document.getElementById('expression').value = '';
+            }
+        </script>
+    </div>
+    <!-- Bootstrap JS 및 Popper.js 추가 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
