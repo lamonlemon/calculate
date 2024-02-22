@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>공학 계산기</title>
-    <!-- Bootstrap CSS 추가 -->
+    <title>Scientific calculator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .calculator {
@@ -36,7 +35,7 @@
 </head>
 <body>
     <div class="container mt-5 calculator">
-        <h1 class="mb-4">공학 계산기</h1>
+        <h1 class="mb-4">Scientific Calculator</h1>
         <form method="post" action="/calculate">
             <div class="form-group">
                 <input type="text" class="form-control" name="expression" id="expression" placeholder="0" required>
@@ -45,7 +44,7 @@
                 <button type="button" class="btn btn-warning" onclick="appendToExpression('!')">x!</button>
                 <button type="button" class="btn btn-primary" onclick="appendToExpression('(')">(</button>
                 <button type="button" class="btn btn-primary" onclick="appendToExpression(')')">)</button>
-                <button type="button" class="btn btn-primary" onclick="appendToExpression('%')">%</button>
+                <button type="button" class="btn btn-primary" onclick="appendToExpression('%')">mod</button>
                 <button type="button" class="btn btn-danger" onclick="clearExpression()">CE</button>
                 <br><br>
                 <button type="button" class="btn btn-warning" onclick="appendToExpression('π')">π</button>
@@ -70,7 +69,7 @@
                 <button type="button" class="btn btn-primary" onclick="appendToExpression('0')">0</button>
                 <button type="button" class="btn btn-info" onclick="appendToExpression('.')">.</button>
                 <button type="submit" class="btn btn-success">=</button>
-                <button type="button" class="btn btn-success" onclick="appendToExpression('-')">+</button>
+                <button type="button" class="btn btn-success" onclick="appendToExpression('+')">+</button>
             </div>
         </form>
         {% if result is defined %}
@@ -91,7 +90,6 @@
             }
         </script>
     </div>
-    <!-- Bootstrap JS 및 Popper.js 추가 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
